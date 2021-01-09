@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:brewer="http://brewer.algaworks.com">
+
+<body>
+<div th:fragment="foto" style="margin-top: 30px">
+	<div class="row">
+		<div class="form-group  col-sm-12">
+			<input type="hidden" th:field="*{foto}">
+			<input type="hidden" th:field="*{contentType}">
+		
+			<label class="control-label">Foto</label>
+			
+			<div class="js-container-foto-cerveja" th:attr="data-url-fotos=@{/fotos}">
+				<div id="upload-drop" class="bw-upload">
+					<i class="glyphicon  glyphicon-cloud-upload"></i>
+					<span>Arraste a foto aqui ou </span>
+					<a class="bw-upload-form-file">selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<button class="btn  btn-default js-botao-aba-dados-principais" type="button">Ir para dados principais</button>
+	</div>
+</div>
+</body>
+</html>

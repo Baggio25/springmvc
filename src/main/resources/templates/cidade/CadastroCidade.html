@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head>
+	<title>Brewer - Cadastro de Cidade</title>
+</head>
+
+<body>
+
+	<!-- Início da section principal -->
+	<section class="aw-layout-content js-content" layout:fragment="conteudo">
+	
+		<!-- Início Header -->
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro de Cidade</h1>
+			</div>
+		</div>
+		<!-- Fim Header -->
+		
+		<!-- Início container-fluid -->
+		<div class="container-fluid">
+			
+			<!-- Início form -->
+			<form>
+				<div class="form-group col-sm-4">
+					<label for="estado">Estado</label>
+					<select id="estado" class="form-control" autofocus="autofocus">
+						<option value="">Selecione o estado</option>
+						<option value="1">Paraná</option>
+					</select>
+				</div>
+				
+				<div class="col-sm-8 form-group">
+					<label for="nome">Nome</label>
+					<input id="nome" type="text" class="form-control" >
+				</div>
+				
+				<button type="submit" class="btn  btn-primary">Salvar</button>
+			
+			</form>
+			<!-- Fim form -->
+			
+		<!-- Fim container-fluid -->
+		</div>
+	
+	<!-- Fim da section principal -->
+	</section>
+</body>
+</html>

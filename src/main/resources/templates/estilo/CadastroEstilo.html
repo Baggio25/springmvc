@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+
+<head>
+	<title>Brewer - Cadastro de Estilo</title>
+</head>
+
+<body>
+
+	<!-- Início da section principal -->
+	<section class="aw-layout-content js-content" layout:fragment="conteudo">
+	
+		<!-- Início Header -->
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro de Estilo</h1>
+			</div>
+		</div>
+		<!-- Fim Header -->
+		
+		<!-- Início container-fluid -->
+		<div class="container-fluid">
+			
+			<th:block th:include="fragments/MensagemSucesso"></th:block>
+			
+			<!-- Início form -->
+			<form method="post" th:object="${estilo}" >
+			
+				<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+				
+				<div class="row">
+					<div class="col-sm-6 form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+						<label for="nome" class="control-label">Nome</label>
+						<input id="nome" type="text" class="form-control" th:field="*{nome}" autofocus="autofocus">
+					</div>
+				</div>
+				<button type="submit" class="btn  btn-primary">Salvar</button>
+			
+			</form>
+			<!-- Fim form -->
+			
+		<!-- Fim container-fluid -->
+		</div>
+	
+	<!-- Fim da section principal -->
+	</section>
+</body>
+</html>

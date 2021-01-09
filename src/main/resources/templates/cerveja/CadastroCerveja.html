@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:brewer="http://brewer.algaworks.com">
+	
+<head>
+	<title>Cadastro de cerveja</title>
+	
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/upload.min.css}"/>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Cadastro de cerveja
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
+			<brewer:message/>
+	
+			<div class="form-group">
+				<ul class="nav nav-tabs" role="tablist" id="tabsCadastro">
+				    <li role="presentation" class="active"><a href="#dadosprincipais" aria-controls="dadosprincipais" role="tab" data-toggle="tab">Dados Principais</a></li>
+				    <li role="presentation"><a href="#foto" aria-controls="foto" role="tab" data-toggle="tab">Foto</a></li>
+				</ul>
+		
+				<!-- Tab panes -->
+				<div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="dadosprincipais">
+				    	<div th:replace="cerveja/fragments/DadosPrincipaisCervejaCadastro :: dadosprincipais"></div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="foto">
+				    	<div th:replace="cerveja/fragments/FotoCervejaCadastro :: foto"></div>
+				    </div>
+				</div>
+			</div>
+			
+			
+			<div class="form-group"  style="float: right;">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+	
+		</form>
+	</div>
+	
+	<div th:replace="estilo/CadastroRapidoEstilo :: modal"></div>
+	<th:block th:replace="hbs/FotoCerveja"></th:block>
+</section>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/estilo.cadastro-rapido.js}"></script>
+	<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+	<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+	<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+	<script th:src="@{/javascripts/cerveja.upload-fotos.js}"></script>
+	
+	<script>
+		$(".js-botao-aba-foto").on('click', function(){
+			$('#tabsCadastro a[href="#foto"]').tab('show')
+		});	
+		
+		$(".js-botao-aba-dados-principais").on('click', function(){
+			$('#tabsCadastro a[href="#dadosprincipais"]').tab('show')
+		});	
+	</script>
+	
+</th:block>
+	
+</body>
+</html>
