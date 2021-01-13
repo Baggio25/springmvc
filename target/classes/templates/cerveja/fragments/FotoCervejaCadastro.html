@@ -4,8 +4,8 @@
 	xmlns:brewer="http://brewer.algaworks.com">
 
 <body>
-<div th:fragment="foto" style="margin-top: 30px">
-	<div class="row">
+<th:block th:fragment="foto">
+	<div class="row"  style="margin-top: 10px">
 		<div class="form-group  col-sm-12">
 			<input type="hidden" th:field="*{foto}">
 			<input type="hidden" th:field="*{contentType}">
@@ -25,6 +25,6 @@
 	<div class="form-group">
 		<button class="btn  btn-default js-botao-aba-dados-principais" type="button">Ir para dados principais</button>
 	</div>
-</div>
+</th:block>
 </body>
 </html>

@@ -5,8 +5,8 @@
 
 
 <body>
-<div th:fragment="dadosprincipais" style="margin-top: 30px">
-			<div class="row">
+<th:block th:fragment="dadosprincipais">
+			<div class="row"  style="margin-top: 10px">
 				<div class="col-sm-2  form-group  bw-required bw-required" brewer:classforerror="sku">
 					<label for="sku" class="control-label">SKU</label>
 					<input id="sku" type="text" class="form-control" th:field="*{sku}" autofocus="autofocus"/>
@@ -95,6 +95,6 @@
 			<div class="form-group">
 				<button class="btn  btn-default js-botao-aba-foto" type="button">Ir para foto</button>
 			</div>
-</div>
+</th:block>
 </body>
 </html>

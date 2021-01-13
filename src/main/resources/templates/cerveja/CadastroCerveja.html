@@ -46,10 +46,10 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 				    <div role="tabpanel" class="tab-pane active" id="dadosprincipais">
-				    	<div th:replace="cerveja/fragments/DadosPrincipaisCervejaCadastro :: dadosprincipais"></div>
+				    	<th:block th:replace="cerveja/fragments/DadosPrincipaisCervejaCadastro :: dadosprincipais"></th:block>
 				    </div>
 				    <div role="tabpanel" class="tab-pane" id="foto">
-				    	<div th:replace="cerveja/fragments/FotoCervejaCadastro :: foto"></div>
+				    	<th:block th:replace="cerveja/fragments/FotoCervejaCadastro :: foto"></th:block>
 				    </div>
 				</div>
 			</div>
