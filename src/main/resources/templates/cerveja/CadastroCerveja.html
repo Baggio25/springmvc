@@ -34,7 +34,7 @@
 
 	<div class="container-fluid">
 
-		<form method="POST" th:object="${cerveja}">
+		<form method="POST" th:object="${cerveja}"  th:action="@{/cervejas/novo}">
 			<brewer:message/>
 	
 			<div class="form-group">
