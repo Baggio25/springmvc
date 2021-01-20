@@ -12,13 +12,21 @@
 
 <section layout:fragment="conteudo">
 
-	<div class="page-header">
-		<div class="container-fluid">
-			<h1>
-				Cadastro de cliente
-			</h1>
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="col-xs-10">
+					<h1>Cadastro de estilo</h1>
+				</div>
+			
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/clientes}">
+							<i class="fa  fa-fw  fa-search"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
 
 	<div class="container-fluid">
 		<form method="POST" th:object="${cliente}" th:action="@{/clientes/novo}">
