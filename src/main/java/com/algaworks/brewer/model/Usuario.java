@@ -13,11 +13,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import com.algaworks.brewer.validation.AtributoConfirmacao;
+
+@AtributoConfirmacao(atributo = "senha", atributoConfirmacao = "confirmacaoSenha", message = "Confirmação da senha não confere")
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -36,9 +41,14 @@ public class Usuario implements Serializable {
 	private String email;
 
 	private String senha;
+	
+	@Transient
+	private String confirmacaoSenha;
+	
 	private Boolean ativo;
 
 	@Column(name = "data_nascimento")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataNascimento;
 
 	@NotNull(message = "Selecione pelo menos um grupo")
@@ -101,6 +111,14 @@ public class Usuario implements Serializable {
 
 	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
+	}
+
+	public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
+
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
 	}
 
 	@Override
