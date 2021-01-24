@@ -326,9 +326,11 @@
   color: #777777;
   text-align: center;
 }
+
 .aw-simple-panel__message {
   padding: 20px 0px;
 }
+
 .aw-simple-panel__message.is-error {
   color: #e70500;
 }
