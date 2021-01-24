@@ -149,3 +149,14 @@
 	width: 180px;
 	text-align: left;
 }
+
+/*
+######################################
+# CUSTOMIZAÇÃO DE COMPONENTES
+######################################
+*/
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; 
+}
