@@ -3,7 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutPadrao"
-	xmlns:brewer="http://brewer.algaworks.com">
+	xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Pesquisa de cidades</title>
@@ -63,7 +64,7 @@
 							<th>
 								<brewer:order page=${pagina} field="estado" text="Estado"/>
 							</th>
-							<th class="table-col-acoes"></th>
+							<th class="table-col-acoes" sec:authorize="hasRole('ROLE_CADASTRAR_CIDADE')"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -71,7 +72,7 @@
 							<td th:text="${cidade.nome}"></td>
 							<td th:text="${cidade.estado.nome}"></td>
 							
-							<td class="text-center">
+							<td class="text-center" sec:authorize="hasRole('ROLE_CADASTRAR_CIDADE')">
 								<a class="btn  btn-link  btn-xs" title="Editar"> 
 									<i class="glyphicon glyphicon-pencil"></i>
 								</a>

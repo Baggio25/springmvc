@@ -10,17 +10,25 @@
 	<div class="container-fluid">
 
 		<div class="navbar-header">
-			<a class="navbar-brand hidden-sm" href="#"> <img alt="AlgaWorks"
+			<a class="navbar-brand" href="#"> <img alt="AlgaWorks"
 				th:src="@{/images/logo.png}" />
 			</a>
 
 			<ul class="nav  navbar-nav">
-				<li><a href="#" class="js-sidebar-toggle"><i
-						class="fa  fa-bars"></i></a></li>
+				<li>
+					<a href="#" class="js-sidebar-toggle">
+						<i class="fa  fa-bars"></i>
+					</a>
+				</li>
 			</ul>
 		</div>
 
 		<ul class="nav navbar-nav  navbar-right">
+			
+			<li>
+				<p class="navbar-text" th:text="|Usuário: ${#authentication.principal.usuario.nome}|"></p>
+			</li>
+		
 			<li><a th:href="@{/logout}"><em class="fa  fa-sign-out"></em></a></li>
 		</ul>
 
