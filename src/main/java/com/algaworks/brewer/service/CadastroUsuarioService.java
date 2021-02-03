@@ -51,5 +51,10 @@ public class CadastroUsuarioService {
 			throw new NomeEstiloJaCadastradoException("E-mail de usuário já cadastrado");
 		}
 	}
+
+	@Transactional
+	public void alterarStatus(Long[] codigos, StatusUsuario statusUsuario) {
+		statusUsuario.executar(codigos, usuarios);
+	}
 	
 }
