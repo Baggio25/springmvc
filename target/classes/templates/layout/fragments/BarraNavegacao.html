@@ -25,9 +25,29 @@
 
 		<ul class="nav navbar-nav  navbar-right">
 			
-			<li>
+			<li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          <i class="fa  fa-user"></i>
+		        </a>
+		        
+		        <ul class="dropdown-menu">
+		          <li>
+		            <div class="aw-logged-user" style="text-align: center">
+		            	<span>Seja bem-vindo(a):</span>
+		            	<span class="aw-logged-user__name" 
+		            		th:text="${#authentication.principal.usuario.nome}"></span>
+		            </div>
+		          </li>
+		          <li role="separator" class="divider"></li>
+		          <li><a href="#">Meu perfil</a></li>
+		          <li><a href="#">Alterar senha</a></li>
+		          <li><a href="#">Trocar empresa</a></li>
+		        </ul>
+	      	</li>
+			
+			<!-- <li>
 				<p class="navbar-text" th:text="|Seja bem-vindo(a): ${#authentication.principal.usuario.nome}|"></p>
-			</li>
+			</li> -->
 		
 			<li><a th:href="@{/logout}"><em class="fa  fa-sign-out"></em></a></li>
 		</ul>
