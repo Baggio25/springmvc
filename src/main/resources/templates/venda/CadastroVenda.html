@@ -133,12 +133,12 @@
 					<div class="row">
 						<div class="form-group  col-sm-3" brewer:classforerror="dataEntrega">
 							<label class="control-label" for="dataEntrega">Data da entrega</label>
-							<input type="text" class="form-control" id="dataEntrega" th:field="*{dataEntrega}"/>
+							<input type="text" class="form-control  js-date" id="dataEntrega" th:field="*{dataEntrega}"/>
 						</div>
 						
 						<div class="form-group  col-sm-3">
 							<label class="control-label" for="horarioEntrega">Horário de entrega</label>
-							<input type="text" class="form-control" id="horarioEntrega"  th:field="*{horarioEntrega}"/>
+							<input type="text" class="form-control" id="horarioEntrega"  th:field="*{horarioEntrega}" placeholder="Ex.: 12:00"/>
 						</div>
 					</div>
 					

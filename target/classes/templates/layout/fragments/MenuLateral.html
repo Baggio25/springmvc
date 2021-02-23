@@ -10,7 +10,7 @@
     	<nav class="aw-menu  js-menu">
       		<ul class="aw-menu__list">
 
-        		<li class="aw-menu__item">
+        		<li class="aw-menu__item" brewer:menu="@{/}">
           			<a th:href="@{/}"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
         		</li>
         		
@@ -21,8 +21,13 @@
           			</a>
       
           			<ul class="aw-menu__list  aw-menu__list--sublist">
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/vendas}">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/vendas/nova}">
 			            	<a th:href="@{/vendas/nova}">Nova venda</a>
+			            </li>
+			        </ul>
+			        <ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/vendas}">
+			            	<a th:href="@{/vendas}">Pesquisa de vendas</a>
 			            </li>
 			        </ul>
 			    </li>
@@ -34,10 +39,10 @@
           			</a>
       
           			<ul class="aw-menu__list  aw-menu__list--sublist">
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/cervejas}">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/cervejas.*}">
 			            	<a th:href="@{/cervejas}">Cervejas</a>
 			            </li>
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/estilos}">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/estilos.*}">
 			            	<a th:href="@{/estilos}">Estilos</a>
 			            </li>
           			</ul>
@@ -50,14 +55,32 @@
           			</a>
 
           			<ul class="aw-menu__list  aw-menu__list--sublist">
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/clientes}">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/clientes.*}">
 			            	<a th:href="@{/clientes}">Clientes</a>
 			            </li>
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/usuarios}">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/usuarios.*}">
 			            	<a th:href="@{/usuarios}">Usuários</a>
 			            </li>
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/cidades}">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/cidades.*}">
 			            	<a th:href="@{/cidades}">Cidades</a>
+			            </li>
+          			</ul>
+        		</li>
+
+				<li class="aw-menu__item">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-file-pdf-o "></i><span>Relatórios</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link">
+			            	<a th:href="@{/}">Venda</a>
+			            </li>
+          			</ul>
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link">
+			            	<a th:href="@{/clientes}">Cadastros Básicos</a>
 			            </li>
           			</ul>
         		</li>

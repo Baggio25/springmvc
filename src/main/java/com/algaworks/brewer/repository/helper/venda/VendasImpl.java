@@ -72,7 +72,7 @@ public class VendasImpl implements VendasQueries{
 			if(vendaFilter.getAte() != null) {
 				LocalDateTime ate = LocalDateTime.of(vendaFilter.getAte()
 						, LocalTime.of(23, 59));
-				criteria.add(Restrictions.ge("dataCriacao", ate));
+				criteria.add(Restrictions.le("dataCriacao", ate));
 			}
 			
 			if(vendaFilter.getValorMinimo() != null) {
@@ -80,7 +80,7 @@ public class VendasImpl implements VendasQueries{
 			}
 			
 			if(vendaFilter.getValorMaximo() != null) {
-				criteria.add(Restrictions.ge("valorTotal", vendaFilter.getValorMaximo()));
+				criteria.add(Restrictions.le("valorTotal", vendaFilter.getValorMaximo()));
 			}
 			
 			if (!StringUtils.isEmpty(vendaFilter.getNomeCliente())) {
