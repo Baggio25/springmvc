@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
@@ -89,7 +90,14 @@ public class Cerveja implements Serializable {
 	private void prePersistUpdate() {
 		sku = sku.toUpperCase();
 	}
-
+	
+	@Transient
+	private boolean novaFoto;
+	
+	public boolean isNovo() {
+		return codigo == null;
+	}
+	
 	public String getSku() {
 		return sku;
 	}
@@ -198,6 +206,15 @@ public class Cerveja implements Serializable {
 		return !StringUtils.isEmpty(foto) ? foto : "cerveja-mock.png";
 	}
 	
+	
+	public boolean isNovaFoto() {
+		return novaFoto;
+	}
+
+	public void setNovaFoto(boolean novaFoto) {
+		this.novaFoto = novaFoto;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
