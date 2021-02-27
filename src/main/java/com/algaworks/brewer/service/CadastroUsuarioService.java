@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 
 import com.algaworks.brewer.model.Usuario;
 import com.algaworks.brewer.repository.Usuarios;
-import com.algaworks.brewer.service.exception.NomeEstiloJaCadastradoException;
+import com.algaworks.brewer.service.exception.EmailUsuarioJaCadastradoException;
 import com.algaworks.brewer.service.exception.SenhaObrigatoriaUsuarioExpcetion;
 
 @Service
@@ -24,32 +24,27 @@ public class CadastroUsuarioService {
 	
 	@Transactional
 	public void salvar(Usuario usuario) {
-		Optional<Usuario> usuarioOptional = usuarios.findByEmail(usuario.getEmail());
-		
-		validaEmailExistente(usuarioOptional);
-		validaSenhaObrigatoria(usuario);
-		criptografaSenha(usuario);
-		
-		usuarios.save(usuario);
-	}
-
-	private void criptografaSenha(Usuario usuario) {
-		if(usuario.isNovo()) {
-			usuario.setSenha(this.passwordEncoder.encode(usuario.getSenha()));
-			usuario.setConfirmacaoSenha(usuario.getSenha());
+		Optional<Usuario> usuarioExistente = usuarios.findByEmail(usuario.getEmail());
+		if (usuarioExistente.isPresent() && usuarioExistente.get().equals(usuario)) {
+			throw new EmailUsuarioJaCadastradoException("E-mail já cadastrado");
 		}
-	}
-
-	private void validaSenhaObrigatoria(Usuario usuario) {
-		if(usuario.isNovo() && StringUtils.isEmpty(usuario.getSenha())) {
+		
+		if (usuario.isNovo() && StringUtils.isEmpty(usuario.getSenha())) {
 			throw new SenhaObrigatoriaUsuarioExpcetion("Senha é obrigatória para novo usuário");
 		}
-	}
-
-	private void validaEmailExistente(Optional<Usuario> usuarioOptional) {
-		if(usuarioOptional.isPresent()) {
-			throw new NomeEstiloJaCadastradoException("E-mail de usuário já cadastrado");
+		
+		if (usuario.isNovo() || !StringUtils.isEmpty(usuario.getSenha())) {
+			usuario.setSenha(this.passwordEncoder.encode(usuario.getSenha()));
+		} else if (StringUtils.isEmpty(usuario.getSenha())) {
+			usuario.setSenha(usuarioExistente.get().getSenha());
 		}
+		usuario.setConfirmacaoSenha(usuario.getSenha());
+		
+		if (!usuario.isNovo() && usuario.getAtivo() == null) {
+			usuario.setAtivo(usuarioExistente.get().getAtivo());
+		}
+		
+		usuarios.save(usuario);
 	}
 
 	@Transactional

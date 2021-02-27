@@ -3,7 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutPadrao"
-	xmlns:brewer="http://brewer.algaworks.com">
+	xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Pesquisa de estilo</title>
@@ -19,7 +20,7 @@
 					<h1>Pesquisa de estilos</h1>
 				</div>
 				
-				<div class="col-xs-2">
+				<div class="col-xs-2"  sec:authorize="hasRole('ROLE_CADASTRAR_ESTILO')">
 					<div class="aw-page-header-controls">
 						<a class="btn btn-default" th:href="@{/estilos/novo}">
 							<i class="fa  fa-fw  fa-plus"></i> <span class="hidden-xs  hidden-sm">Novo estilo</span>
@@ -63,10 +64,10 @@
 							<td th:text="${estilo.codigo}"></td>
 							<td th:text="${estilo.nome}"></td>
 							<td class="text-center">
-								<a class="btn  btn-link  btn-xs" title="Editar"> 
+								<a class="btn  btn-link  btn-xs" title="Editar" sec:authorize="hasRole('ROLE_CADASTRAR_ESTILO')"> 
 									<i class="glyphicon glyphicon-pencil"></i>
 								</a>
-								<a class="btn  btn-link  btn-xs" title="Excluir">
+								<a class="btn  btn-link  btn-xs" title="Excluir" sec:authorize="hasRole('ROLE_EXCLUIR_ESTILO')">
 									<i class="glyphicon glyphicon-remove"></i>
 								</a>
 							</td>

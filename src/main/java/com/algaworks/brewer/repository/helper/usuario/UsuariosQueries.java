@@ -14,5 +14,6 @@ public interface UsuariosQueries {
 	public Optional<Usuario> porEmailEAtivo(String email);
 	public List<String> permissoes(Usuario usuario);
 	public Page<Usuario> filtrar(UsuarioFilter usuarioFilter, Pageable pageable);
+	public Usuario buscarComGrupos(Long codigo);
 
 }

@@ -3,7 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutPadrao"
-	xmlns:brewer="http://brewer.algaworks.com">
+	xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Pesquisa de venda</title>
@@ -19,7 +20,7 @@
 					<h1>Pesquisa de vendas</h1>
 				</div>
 				
-				<div class="col-xs-2">
+				<div class="col-xs-2" sec:authorize="hasRole('ROLE_CADASTRAR_VENDA')">
 					<div class="aw-page-header-controls">
 						<a class="btn btn-default" th:href="@{/vendas/nova}">
 							<i class="fa  fa-fw  fa-plus"></i> <span class="hidden-xs  hidden-sm">Nova venda</span>
@@ -97,7 +98,7 @@
 	                	<th>Valor total</th>
 	                	<th>Vendedor</th>
 	                	<th>Status</th>
-	                 	<th class="table-col-acoes"></th>
+	                 	<th class="table-col-acoes" sec:authorize="hasRole('ROLE_CADASTRAR_VENDA')"></th>
 					</tr>
 				</thead>
 				
@@ -109,8 +110,8 @@
 						<td th:text="|R$ ${{venda.valorTotal}}|"></td>
 						<td th:text="${venda.usuario.nome}"></td>
 						<td th:text="${venda.status.descricao}"></td>
-	                 	<td class="text-center">
-		   					<a class="btn  btn-link  btn-xs  js-tooltip" title="Editar" href="#">
+	                 	<td class="text-center" sec:authorize="hasRole('ROLE_CADASTRAR_VENDA')">
+		   					<a class="btn  btn-link  btn-xs  js-tooltip" title="Editar" href="#" th:href="@{/vendas/{codigo}(codigo=${venda.codigo})}">
 		   						<i class="glyphicon glyphicon-pencil"></i>
 		   					</a>
 	                 	</td>

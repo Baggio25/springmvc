@@ -4,7 +4,8 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutPadrao"
 	xmlns:brewer="http://brewer.algaworks.com"
-	xmlns:data="http://www.thymeleaf.org/extras/data">
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <head>
 	<title>Pesquisa de cliente</title>
@@ -20,7 +21,7 @@
 					<h1>Pesquisa de clientes</h1>
 				</div>
 				
-				<div class="col-xs-2">
+				<div class="col-xs-2" sec:authorize="hasRole('ROLE_CADASTRAR_CLIENTE')">
 					<div class="aw-page-header-controls">
 						<a class="btn btn-default" th:href="@{/clientes/novo}">
 							<i class="fa  fa-fw  fa-plus"></i> <span class="hidden-xs  hidden-sm">Novo cliente</span>
@@ -76,10 +77,10 @@
 							<td th:text="${cliente.endereco.nomeCidadeSiglaEstado}"></td>
 							
 							<td class="text-center">
-								<a class="btn  btn-link  btn-xs" title="Editar"> 
+								<a class="btn  btn-link  btn-xs" title="Editar" sec:authorize="hasRole('ROLE_CADASTRAR_CLIENTE')"> 
 									<i class="glyphicon glyphicon-pencil"></i>
 								</a>
-								<a class="btn  btn-link  btn-xs" title="Excluir">
+								<a class="btn  btn-link  btn-xs" title="Excluir" sec:authorize="hasRole('ROLE_EXCLUIR_CLIENTE')">
 									<i class="glyphicon glyphicon-remove"></i>
 								</a>
 							</td>

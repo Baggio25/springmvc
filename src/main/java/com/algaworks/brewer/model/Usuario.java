@@ -65,6 +65,10 @@ public class Usuario implements Serializable {
 		this.confirmacaoSenha = senha;
 	}
 	
+	public boolean isNovo() {
+		return codigo == null;
+	}
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -129,9 +133,6 @@ public class Usuario implements Serializable {
 		this.confirmacaoSenha = confirmacaoSenha;
 	}
 	
-	public boolean isNovo() {
-		return codigo == null;
-	}
 
 	@Override
 	public int hashCode() {

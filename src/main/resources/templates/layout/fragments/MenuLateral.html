@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:brewer="http://brewer.algaworks.com">
+	xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	
 <body>
 <aside class="aw-layout-sidebar  js-sidebar" th:fragment="layout-sidebar">
@@ -14,15 +15,15 @@
           			<a th:href="@{/}"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
         		</li>
         		
-        		<li class="aw-menu__item">
+        		<li class="aw-menu__item" >
           			<a href="#">
-            			<i class="fa  fa-fw  fa-credit-card"></i><span>Vendas</span>
+            			<i class="fa  fa-fw  fa-credit-card"></i><span>Venda</span>
             			<i class="aw-menu__navigation-icon  fa"></i>
           			</a>
       
-          			<ul class="aw-menu__list  aw-menu__list--sublist">
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/vendas/nova}">
-			            	<a th:href="@{/vendas/nova}">Nova venda</a>
+          			<ul class="aw-menu__list  aw-menu__list--sublist"  sec:authorize="hasRole('ROLE_CADASTRAR_VENDA')">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/vendas.+}">
+			            	<a th:href="@{/vendas/nova}">Cadastro venda</a>
 			            </li>
 			        </ul>
 			        <ul class="aw-menu__list  aw-menu__list--sublist">
@@ -31,6 +32,22 @@
 			            </li>
 			        </ul>
 			    </li>
+			    
+			    <li class="aw-menu__item">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-bank"></i><span>Financeiro</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+      
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link">
+			            	<a th:href="@{/cervejas}">Novo lançamento</a>
+			            </li>
+			            <li class="aw-menu__item  aw-menu__item--link">
+			            	<a th:href="@{/estilos}">Pesquisar Lançamentos</a>
+			            </li>
+          			</ul>
+        		</li>
 
         		<li class="aw-menu__item">
           			<a href="#">
@@ -48,9 +65,30 @@
           			</ul>
         		</li>
 
+        		
+        		
         		<li class="aw-menu__item">
           			<a href="#">
-            			<i class="fa  fa-fw  fa-database"></i><span>Cadastros</span>
+            			<i class="fa  fa-fw  fa-money"></i><span>Cadastros financeiros</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" >
+			            	<a th:href="@{/clientes}">Históricos financeiros</a>
+			            </li>
+			            <li class="aw-menu__item  aw-menu__item--link" >
+			            	<a th:href="@{/usuarios}">Contas financeiras</a>
+			            </li>
+			            <li class="aw-menu__item  aw-menu__item--link">
+			            	<a th:href="@{/cidades}">Instituições bancárias</a>
+			            </li>
+          			</ul>
+        		</li>
+				
+				<li class="aw-menu__item">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-database"></i><span>Cadastros comuns</span>
             			<i class="aw-menu__navigation-icon  fa"></i>
           			</a>
 

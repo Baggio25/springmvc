@@ -10,4 +10,5 @@ public interface ClientesQueries {
 
 	public Page<Cliente> filtrar(ClienteFilter clienteFilter, Pageable pageable);
 	
+	
 }

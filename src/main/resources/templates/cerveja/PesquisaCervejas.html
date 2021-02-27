@@ -21,7 +21,7 @@
 					<h1>Pesquisa de cervejas</h1>
 				</div>
 				
-				<div class="col-xs-2">
+				<div class="col-xs-2" sec:authorize="hasRole('ROLE_CADASTRAR_CERVEJA')">
 					<div class="aw-page-header-controls">
 						<a class="btn btn-default" th:href="@{/cervejas/novo}">
 							<i class="fa  fa-fw  fa-plus"></i> <span class="hidden-xs  hidden-sm">Nova cerveja</span>
@@ -125,11 +125,11 @@
 						<td th:text="${cerveja.origem.descricao}"></td>
 						<td class="text-right" th:text="|R$ ${cerveja.valor}|"></td>
 						<td class="text-center">
-							<a class="btn  btn-link  btn-xs js-tooltip" title="Editar" 
+							<a class="btn  btn-link  btn-xs js-tooltip" title="Editar" sec:authorize="hasRole('ROLE_CADASTRAR_CERVEJA')"
 										th:href="@{/cervejas/{codigo}(codigo=${cerveja.codigo})}"> 
 								<i class="glyphicon glyphicon-pencil"></i>
 							</a>
-							<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" 
+							<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" sec:authorize="hasRole('ROLE_EXCLUIR_CERVEJA')"
 								data:url="@{/cervejas/{codigo}(codigo=${cerveja.codigo})}"
 								data:objeto="${cerveja.nome}">
 								<i class="glyphicon glyphicon-remove"></i>
