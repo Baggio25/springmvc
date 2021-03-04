@@ -247,10 +247,17 @@
 	display: block;
 }
 
+.bw-tabela-cerveja-estoque {
+	font-weight: 200;
+	font-size: 1.0em;
+	display: block;
+}
+
 .bw-tabela-cerveja-origem {
 	color: #aaa;
 	display: block;
 	font-weight: 200;
+	margin-top: 2px;
 }
 
 .bw-tabela-cerveja-campo-quantidade {

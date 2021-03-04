@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.algaworks.brewer.repository.Cervejas;
 import com.algaworks.brewer.repository.Clientes;
 import com.algaworks.brewer.repository.Vendas;
 
@@ -19,6 +20,9 @@ public class DashboardController {
 	@Autowired
 	private Clientes clientes;
 	
+	@Autowired
+	private Cervejas cervejas;
+	
 	@GetMapping
 	public ModelAndView iniciar() {
 		ModelAndView mv = new ModelAndView("/Dashboard");
@@ -26,6 +30,7 @@ public class DashboardController {
 		mv.addObject("vendasNoMes", vendas.valorTotalNoMes());
 		mv.addObject("ticketMedio", vendas.valorTicketMedioNoAno());
 		
+		mv.addObject("valorItensEstoque", cervejas.valorItensEstoque());
 		mv.addObject("totalClientes", clientes.count());
 		
 		return mv;
